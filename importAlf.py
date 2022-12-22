@@ -21,8 +21,7 @@ def alf_loadData(path):
 
 ## this is a commit comment
 
-def function():
-    pass
+
 
 
 def alf_plotMPP(df):
@@ -84,8 +83,8 @@ def alf_JoinAndLoad():
 
 
     # Drop possible duplicate columns
-    df = df.T.drop_duplicates().T
-
+    # df = df.T.drop_duplicates().T
+    df = df.loc[:,~df.columns.duplicated()].copy()
     # Rename columns
     df = change_column_names(df)
 
@@ -130,25 +129,28 @@ def alf_plotter(df):
     for i in range(numPlots):
         df.plot(x='Timestamp', y=variables[i], figsize=(10,8))
 
+def alf_2var_plotter(df):
+    print(df.columns)
+
+    while True:
+        try:
+            variables=input('Enter 2 variables from the list separated by semicolon space: ').split('; ')
+            check =  any(item in variables for item in df.columns)
 
 
+            if not check:
+                raise ValueError("Invalid input")
+            
 
-# def alf_plotter(df):
+            if len(variables) != 2:
+                raise ValueError(f"Choose only {2} variables")
+            break
 
-#     numPlots = input('How namy plots?:')
-
-#     numPlots = int(numPlots)
-
-#     print(df.columns)
-
-#     variables=input('Enter variables from the list separated by semicolon space: ').split('; ')
-
-#     # start_date,end_date = aux_inpt[0], aux_inpt[1]
-
-#     for i in range(numPlots):
-#         df.plot(x='Timestamp', y=variables[i], figsize=(10,8))
-
-#     # return variables
+        except ValueError as e:
+            print(e)
+            print('Try again')
 
 
-
+    fig, ax = plt.subplots(figsize=(10,8))
+    df.plot(x = 'Timestamp', y = variables[0], ax=ax)
+    df.plot(x = 'Timestamp', y = variables[1], ax = ax, secondary_y = True) 
