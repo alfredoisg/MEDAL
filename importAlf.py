@@ -128,6 +128,8 @@ def alf_plotter(df):
 
 def alf_2var_plotter(df):
 
+    df = date_slicer(df)
+
     from matplotlib import rc
     rc('font', weight='bold')
 
@@ -153,16 +155,16 @@ def alf_2var_plotter(df):
             print(e)
             print('Try again')
 
+    
 
     fig, ax = plt.subplots()
 
     colors = ['gray','tab:blue']
 
-    df.plot(color=colors[0],x='Timestamp',y = variables[0], figsize=(10,8), ax=ax)#.legend(loc='center left',bbox_to_anchor=(1.0, 0.75))
+    df.plot(color=colors[0],x='Timestamp',y = variables[0], figsize=(10,8), ax=ax)
 
     ax1 = ax.twinx()
-    df.plot(color=colors[1],x='Timestamp',y = variables[1], ax = ax1)#.legend(loc='center left',bbox_to_anchor=(1.0, 0.25))
-
+    df.plot(color=colors[1],x='Timestamp',y = variables[1], ax = ax1, grid=False)
 
     ax1.spines['top'].set_linewidth(3.5)
     ax1.spines['bottom'].set_linewidth(3.5)
@@ -170,7 +172,7 @@ def alf_2var_plotter(df):
     ax1.spines['left'].set_color(colors[0])
     ax1.spines['left'].set_linewidth(3.5)
 
-    # ax1.set_yticklabels(weight='bold')
+  
 
     ax1.spines['right'].set_color(colors[1])
     ax1.spines['right'].set_linewidth(3.5)
