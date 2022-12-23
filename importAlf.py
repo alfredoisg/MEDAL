@@ -138,10 +138,10 @@ def alf_2var_plotter(df):
     while True:
         try:
             variables=input('Enter 2 variables from the list separated by semicolon space: ').split('; ')
-            check =  any(item in variables for item in df.columns)
+            check =  all(item in variables for item in df.columns)
 
 
-            if not check:
+            if check:
                 raise ValueError("Invalid input")
             
 
