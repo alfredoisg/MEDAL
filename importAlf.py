@@ -17,10 +17,6 @@ def alf_loadData(path):
 
     return df
 
-#comment in main-branch
-
-## this is a commit comment
-
 
 
 
@@ -30,28 +26,28 @@ def alf_plotMPP(df):
     string='MPP '
     moduleMPP=[string + i for i in aux]
 
-    df_sliced=slicer(df) 
+    df_sliced=date_slicer(df) 
     df_sliced.plot(x = 'Timestamp', y = moduleMPP, figsize=(10,8))
     plt.legend(aux)
 
 
-def slicer(df):
+# def slicer(df):
 
-    aux_inpt=input('Enter start and end dates separated by semicolon space (YYYY-MM-DD; YYYY-MM-DD): ').split('; ')
+#     aux_inpt=input('Enter start and end dates separated by semicolon space (YYYY-MM-DD; YYYY-MM-DD): ').split('; ')
 
-    start_date,end_date = aux_inpt[0], aux_inpt[1]
+#     start_date,end_date = aux_inpt[0], aux_inpt[1]
 
-    start_time = df[df['Timestamp'].astype(str).str.contains(start_date)].iloc[0].astype(str).iloc[0][-8:]
-    end_time = df[df['Timestamp'].astype(str).str.contains(end_date)].iloc[-1].astype(str).iloc[0][-8:]
+#     start_time = df[df['Timestamp'].astype(str).str.contains(start_date)].iloc[0].astype(str).iloc[0][-8:]
+#     end_time = df[df['Timestamp'].astype(str).str.contains(end_date)].iloc[-1].astype(str).iloc[0][-8:]
 
-    df = df.set_index(['Timestamp'])
+#     df = df.set_index(['Timestamp'])
 
 
 
-    aux=df.loc[str(start_date)+' '+start_time:str(end_date)+' '+end_time]
-    aux.reset_index(inplace=True) 
+#     aux=df.loc[str(start_date)+' '+start_time:str(end_date)+' '+end_time]
+#     aux.reset_index(inplace=True) 
 
-    return aux
+#     return aux
 
 
 
@@ -85,6 +81,7 @@ def alf_JoinAndLoad():
     # Drop possible duplicate columns
     # df = df.T.drop_duplicates().T
     df = df.loc[:,~df.columns.duplicated()].copy()
+
     # Rename columns
     df = change_column_names(df)
 
@@ -130,12 +127,18 @@ def alf_plotter(df):
         df.plot(x='Timestamp', y=variables[i], figsize=(10,8))
 
 def alf_2var_plotter(df):
+
+    from matplotlib import rc
+    rc('font', weight='bold')
+
+    
+
     print(df.columns)
 
     while True:
         try:
             variables=input('Enter 2 variables from the list separated by semicolon space: ').split('; ')
-            check =  any(item in variables for item in df.columns)
+            check =  all(item in df.columns for item in variables)
 
 
             if not check:
@@ -151,6 +154,61 @@ def alf_2var_plotter(df):
             print('Try again')
 
 
-    fig, ax = plt.subplots(figsize=(10,8))
-    df.plot(x = 'Timestamp', y = variables[0], ax=ax)
-    df.plot(x = 'Timestamp', y = variables[1], ax = ax, secondary_y = True) 
+    fig, ax = plt.subplots()
+
+    colors = ['gray','tab:blue']
+
+    df.plot(color=colors[0],x='Timestamp',y = variables[0], figsize=(10,8), ax=ax)#.legend(loc='center left',bbox_to_anchor=(1.0, 0.75))
+
+    ax1 = ax.twinx()
+    df.plot(color=colors[1],x='Timestamp',y = variables[1], ax = ax1)#.legend(loc='center left',bbox_to_anchor=(1.0, 0.25))
+
+
+    ax1.spines['top'].set_linewidth(3.5)
+    ax1.spines['bottom'].set_linewidth(3.5)
+
+    ax1.spines['left'].set_color(colors[0])
+    ax1.spines['left'].set_linewidth(3.5)
+
+    # ax1.set_yticklabels(weight='bold')
+
+    ax1.spines['right'].set_color(colors[1])
+    ax1.spines['right'].set_linewidth(3.5)
+
+    ax.legend(loc=( 0.15, 1.02))
+    ax1.legend(loc=(0.55, 1.02))
+
+def date_slicer(df):
+
+    while True:
+        try:
+            aux_inpt=input('Enter start and end dates separated by semicolon space (YYYY-MM-DD; YYYY-MM-DD): ').split('; ')
+
+            if len(aux_inpt) != 2:
+                raise ValueError('Invalid input')
+
+
+            if not df['Timestamp'].astype(str).str.contains(aux_inpt[0]).any():
+                raise ValueError('Invalid start date')
+            if not df['Timestamp'].astype(str).str.contains(aux_inpt[1]).any():
+                raise ValueError('Invalid end date')
+            break
+
+        except ValueError as e:
+            print(e)
+            print('Try again')
+
+
+    start_date,end_date = aux_inpt[0], aux_inpt[1]
+
+    start_time = df[df['Timestamp'].astype(str).str.contains(start_date)].iloc[0].astype(str).iloc[0][-8:]
+    end_time = df[df['Timestamp'].astype(str).str.contains(end_date)].iloc[-1].astype(str).iloc[0][-8:]
+
+    df = df.set_index(['Timestamp'])
+
+
+
+    aux=df.loc[str(start_date)+' '+start_time:str(end_date)+' '+end_time]
+    aux.reset_index(inplace=True) 
+
+    return aux
