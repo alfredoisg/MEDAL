@@ -256,3 +256,28 @@ def date_slicer(df):
     aux.reset_index(inplace=True) 
 
     return aux
+
+
+
+
+def select_panel(df):
+
+    panels = ['MS01','MS02','MS03','MS04',
+              'MS05','MS06','MS07','MS08',]
+
+    print(panels)
+
+    while True:
+        try:
+            panel = input('Select one panel from the list: ')
+
+            if panel not in panels:
+                raise ValueError('Panel not in list')
+            break
+        except ValueError as e:
+            print(e)
+            print('Try again')
+
+    df_panel = df[[i for i in df.columns if panel in i]].copy()
+
+    return df_panel
