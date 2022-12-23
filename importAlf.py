@@ -17,10 +17,6 @@ def alf_loadData(path):
 
     return df
 
-#comment in main-branch
-
-## this is a commit comment
-
 
 
 
@@ -30,28 +26,28 @@ def alf_plotMPP(df):
     string='MPP '
     moduleMPP=[string + i for i in aux]
 
-    df_sliced=slicer(df) 
+    df_sliced=date_slicer(df) 
     df_sliced.plot(x = 'Timestamp', y = moduleMPP, figsize=(10,8))
     plt.legend(aux)
 
 
-def slicer(df):
+# def slicer(df):
 
-    aux_inpt=input('Enter start and end dates separated by semicolon space (YYYY-MM-DD; YYYY-MM-DD): ').split('; ')
+#     aux_inpt=input('Enter start and end dates separated by semicolon space (YYYY-MM-DD; YYYY-MM-DD): ').split('; ')
 
-    start_date,end_date = aux_inpt[0], aux_inpt[1]
+#     start_date,end_date = aux_inpt[0], aux_inpt[1]
 
-    start_time = df[df['Timestamp'].astype(str).str.contains(start_date)].iloc[0].astype(str).iloc[0][-8:]
-    end_time = df[df['Timestamp'].astype(str).str.contains(end_date)].iloc[-1].astype(str).iloc[0][-8:]
+#     start_time = df[df['Timestamp'].astype(str).str.contains(start_date)].iloc[0].astype(str).iloc[0][-8:]
+#     end_time = df[df['Timestamp'].astype(str).str.contains(end_date)].iloc[-1].astype(str).iloc[0][-8:]
 
-    df = df.set_index(['Timestamp'])
+#     df = df.set_index(['Timestamp'])
 
 
 
-    aux=df.loc[str(start_date)+' '+start_time:str(end_date)+' '+end_time]
-    aux.reset_index(inplace=True) 
+#     aux=df.loc[str(start_date)+' '+start_time:str(end_date)+' '+end_time]
+#     aux.reset_index(inplace=True) 
 
-    return aux
+#     return aux
 
 
 
@@ -85,6 +81,7 @@ def alf_JoinAndLoad():
     # Drop possible duplicate columns
     # df = df.T.drop_duplicates().T
     df = df.loc[:,~df.columns.duplicated()].copy()
+
     # Rename columns
     df = change_column_names(df)
 
@@ -154,3 +151,39 @@ def alf_2var_plotter(df):
     fig, ax = plt.subplots(figsize=(10,8))
     df.plot(x = 'Timestamp', y = variables[0], ax=ax)
     df.plot(x = 'Timestamp', y = variables[1], ax = ax, secondary_y = True) 
+
+
+def date_slicer(df):
+
+    while True:
+        try:
+            aux_inpt=input('Enter start and end dates separated by semicolon space (YYYY-MM-DD; YYYY-MM-DD): ').split('; ')
+
+            if len(aux_inpt) != 2:
+                raise ValueError('Invalid input')
+
+
+            if not df['Timestamp'].astype(str).str.contains(aux_inpt[0]).any():
+                raise ValueError('Invalid start date')
+            if not df['Timestamp'].astype(str).str.contains(aux_inpt[1]).any():
+                raise ValueError('Invalid end date')
+            break
+
+        except ValueError as e:
+            print(e)
+            print('Try again')
+
+
+    start_date,end_date = aux_inpt[0], aux_inpt[1]
+
+    start_time = df[df['Timestamp'].astype(str).str.contains(start_date)].iloc[0].astype(str).iloc[0][-8:]
+    end_time = df[df['Timestamp'].astype(str).str.contains(end_date)].iloc[-1].astype(str).iloc[0][-8:]
+
+    df = df.set_index(['Timestamp'])
+
+
+
+    aux=df.loc[str(start_date)+' '+start_time:str(end_date)+' '+end_time]
+    aux.reset_index(inplace=True) 
+
+    return aux
