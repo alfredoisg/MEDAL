@@ -25,7 +25,7 @@ def change_column_names(dataframe):
                    'voc [V] (Alpha Centauri - M2-MS01)', 'voc [V] (Alpha Centauri - M2-MS02)', 'voc [V] (Alpha Centauri - M3-MS03)', 'voc [V] (Alpha Centauri - M3-MS04)', 'voc [V] (Alpha Centauri - M4-MS05)', 'voc [V] (Alpha Centauri - M4-MS06)', 'voc [V] (Alpha Centauri - M1-MS07)', 'voc [V] (Alpha Centauri - M1-MS08)', '¹ Calculated value']
 
     columns_new = ['FF_MS01', 'FF_MS02', 'FF_MS03', 'FF_MS04', 'FF_MS05', 'FF_MS06', 'FF_MS07', 'FF_MS08', 
-               'Impp_MS01', 'Impp_MS02', 'Impp_MS03', 'Impp_MS04', 'Impp_MS05', 'Impp_MS06', 'Impp_MS07', 'Impp_MS08', 'irradiance_MS01', 'irradiance_MS02', 'irradiance_MS03', 'irradiance_MS04', 'irradiance_MS05', 'irradiance_MS06', 'irradiance_MS07', 'irradiance_MS08', 
+               'Impp_MS01', 'Impp_MS02', 'Impp_MS03', 'Impp_MS04', 'Impp_MS05', 'Impp_MS06', 'Impp_MS07', 'Impp_MS08', 'Irradiance_MS01', 'Irradiance_MS02', 'Irradiance_MS03', 'Irradiance_MS04', 'Irradiance_MS05', 'Irradiance_MS06', 'Irradiance_MS07', 'Irradiance_MS08', 
                'irradiance_yield_MS01', 'irradiance_yield_MS02', 'irradiance_yield_MS03', 'irradiance_yield_MS04', 'irradiance_yield_MS05', 'irradiance_yield_MS06', 'irradiance_yield_MS07', 'irradiance_yield_MS08', 'Isc_MS01', 'Isc_MS02', 'Isc_MS03', 'Isc_MS04', 'Isc_MS05', 'Isc_MS06', 'Isc_MS07', 'Isc_MS08', 'MPP_MS01', 'MPP_MS02', 'MPP_MS03', 'MPP_MS04', 'MPP_MS05', 'MPP_MS06', 'MPP_MS07', 'MPP_MS08', 
                'temp_MS01', 'temp_MS02', 'temp_MS03', 'temp_MS04', 'temp_MS05', 'temp_MS06', 'temp_MS07', 'temp_MS08','Vmpp_MS01', 'Vmpp_MS02', 'Vmpp_MS03', 'Vmpp_MS04', 'Vmpp_MS05', 'Vmpp_MS06', 'Vmpp_MS07', 'Vmpp_MS08', 'Voc_MS01', 'Voc_MS02', 'Voc_MS03', 'Voc_MS04', 'Voc_MS05', 'Voc_MS06', 'Voc_MS07', 'Voc_MS08']
 
@@ -69,7 +69,7 @@ def alf_plotMPP(df):
     """
     
     aux = input('Enter module name(s) separated by space comma (ex. MSXX, MSXX, MSXX): ').split(', ')
-    string='MPP '
+    string='MPP_'
     moduleMPP=[string + i for i in aux]
 
     df_sliced=date_slicer(df) 
@@ -341,6 +341,7 @@ def select_panel(df):
     1) Prompt the user to select a panel from the list. If the panel is not in the list, an error message is displayed and the user is prompted again.
 
     2) Select the data for the selected panel from the dataframe by filtering the columns that contain the panel name.
+
     3) Return the data for the selected panel.
     """
 
@@ -361,5 +362,37 @@ def select_panel(df):
             print('Try again')
 
     df_panel = df[[i for i in df.columns if panel in i]].copy()
+    
+    df_panel.insert(0,"Timestamp",df.iloc[:,0])
 
     return df_panel
+
+
+
+def getSCparam(df):
+    params = ['Voc', 'Isc', 'FF', 'Vmpp', 'Impp', 'MPP',
+              'Irradiace', 'irradiance_yield', 'irradiation',
+              'temp','rain', 'ambient_temperature','wind_direction', 
+              'wind_speed']
+    print(params)
+
+    while True:
+        try:
+            param = input('Choose a parameter from the list:')
+            if param not in params:
+                raise ValueError('Parameter not in list')
+            break
+        except ValueError as e:
+            print(e)
+            print('Try again')
+    
+    df_sc =df[[i for i in df.columns if param in i]].copy()
+    df_sc.insert(0,'Timestamp',df.iloc[:,0])
+
+    return df_sc
+
+
+def compareSCmodules(df):
+    df = getSCparam(df)
+    df = date_slicer(df)
+    df.plot(x='Timestamp', y=df.columns[1:].tolist(), figsize=(10,8))
