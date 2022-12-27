@@ -370,6 +370,26 @@ def select_panel(df):
 
 
 def getSCparam(df):
+    """
+    This function allows the user to select a parameter from a list of predefined parameters and returns a dataframe containing only the columns corresponding to the selected parameter.
+
+    Input:
+    A pandas dataframe containing the data to be filtered by parameter.
+    
+    Output:
+    A pandas DataFrame containing only the columns corresponding to the selected parameter, and an additional 'Timestamp' column with the corresponding timestamps.
+    
+    Steps:
+    1) Print the list of predefined parameters and prompt the user to choose one of them.
+    
+    2) If the user input is not in the list of predefined parameters, raise an error and ask the user to try again.
+    
+    3) If the user input is valid, create a copy of the dataframe containing only the columns corresponding to the selected parameter.
+    
+    4) Add a 'Timestamp' column to the resulting dataframe with the corresponding timestamps.
+    
+    5) Return the resulting dataframe.
+    """
     params = ['Voc', 'Isc', 'FF', 'Vmpp', 'Impp', 'MPP',
               'Irradiace', 'irradiance_yield', 'irradiation',
               'temp','rain', 'ambient_temperature','wind_direction', 
@@ -393,6 +413,23 @@ def getSCparam(df):
 
 
 def compareSCmodules(df):
+    """
+    This function allows the user to select a parameter from a list of predefined parameters, filter the data by a specified time range, and plot the resulting data for all available solar panel modules.
+
+    Input:
+    A pandas dataframe containing the data to be filtered by parameter and time range.
+
+    Output:
+    A plot comparing the selected parameter for all available solar panel modules over the specified time range.
+    
+    Steps:
+    1) Call the getSCparam function to select a parameter from a list of predefined parameters and return a dataframe containing only the columns corresponding to the selected parameter.
+    
+    2)Call the date_slicer function to filter the data by a specified time range.
+    
+    3) Plot the resulting data for all available solar panel modules over the specified time range.
+    """
+    
     df = getSCparam(df)
     df = date_slicer(df)
     df.plot(x='Timestamp', y=df.columns[1:].tolist(), figsize=(10,8))
