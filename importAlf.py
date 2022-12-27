@@ -3,20 +3,6 @@ import matplotlib.pyplot as plt
 # from ImportAlpha import change_column_names, input_from_array
 import os
 
-def alf_loadData(path):
-
-    "Imports data, changes names, and reduces memory usage!"
-
-    df = pd.read_csv(path, encoding = "ISO-8859-1", sep=';', parse_dates=['Timestamp'], header = 0).iloc[::6]
-    df = change_column_names(df)
-
-    timedates=df.iloc[:,0]
-
-    df=df.iloc[:,1:].astype('float32')
-    df.insert(0,"Timestamp",timedates)
-
-    return df
-
 
 def change_column_names(dataframe):
     """
@@ -63,6 +49,24 @@ def change_column_names(dataframe):
 
 
 def alf_plotMPP(df):
+    """
+    This function generates a plot of multiple modules' maximum power point (MPP) values.
+
+    Input:
+    A dataframe containing the MPP values of the modules
+
+    Output:
+    A plot of the MPP values of the selected modules
+
+    Steps:
+    1) Prompt the user to enter the names of the modules to be plotted, separated by commas and spaces.
+
+    2) Use the date_slicer function (not defined in this code) to slice the dataframe by date.
+
+    3) Generate a plot of the MPP values of the selected modules using the plot function from the matplotlib library. The x-axis is the Timestamp column and the y-axis is the MPP values of the selected modules. The plot is displayed using the show function from the matplotlib library.
+
+    4) Return nothing.
+    """
     
     aux = input('Enter module name(s) separated by space comma (ex. MSXX, MSXX, MSXX): ').split(', ')
     string='MPP '
@@ -73,27 +77,33 @@ def alf_plotMPP(df):
     plt.legend(aux)
 
 
-# def slicer(df):
-
-#     aux_inpt=input('Enter start and end dates separated by semicolon space (YYYY-MM-DD; YYYY-MM-DD): ').split('; ')
-
-#     start_date,end_date = aux_inpt[0], aux_inpt[1]
-
-#     start_time = df[df['Timestamp'].astype(str).str.contains(start_date)].iloc[0].astype(str).iloc[0][-8:]
-#     end_time = df[df['Timestamp'].astype(str).str.contains(end_date)].iloc[-1].astype(str).iloc[0][-8:]
-
-#     df = df.set_index(['Timestamp'])
-
-
-
-#     aux=df.loc[str(start_date)+' '+start_time:str(end_date)+' '+end_time]
-#     aux.reset_index(inplace=True) 
-
-#     return aux
-
-
-
 def alf_JoinAndLoad():
+    """
+    This function reads in a directory containing .csv files and combines them into a single dataframe.
+
+    Input:
+    None
+
+    Output:
+    A dataframe with the contents of the combined .csv files
+
+    Steps:
+    1) Prompt the user for the path of the directory containing the .csv files. If the path is invalid (i.e. the directory does not exist), an error message is displayed and the user is prompted again.
+
+    2) Find all .csv files in the specified directory and store their filenames in a list.
+
+    3) Read each .csv file into a separate dataframe and store them in a list.
+
+    4) Concatenate the list of dataframes into a single dataframe.
+
+    5) Reset the index of each dataframe in the list to remove any duplicate rows. Drop any duplicate columns in the final dataframe.
+
+    6) Rename the columns of the final dataframe using the change_column_names function (not defined in this code).
+
+    7) Reduce the memory usage of the final dataframe by casting the columns to the float32 data type, except for the first column (Timestamp).
+
+    8) Return the final dataframe.
+    """
 
     while True:
         try:
@@ -137,6 +147,24 @@ def alf_JoinAndLoad():
 
 
 def alf_plotter(df):
+    """
+    This function generates a plot of a specified number of variables from a given dataframe.
+
+    Input:
+    A dataframe containing the variables to be plotted
+
+    Output:
+    A plot of the selected variables
+
+    Steps:
+    1) Prompt the user to enter the number of plots to be generated.
+
+    2) Prompt the user to enter the variables to be plotted, separated by semicolon and space. If the user does not enter the correct number of valid variables (i.e. columns in the dataframe), an error message is displayed and the user is prompted again.
+
+    3) Use the plot function from the matplotlib library to generate a plot of each of the selected variables. The x-axis is the Timestamp column and the y-axis is the selected variable. The plot is displayed using the show function from the matplotlib library.
+
+    4) Return nothing.
+    """
 
     numPlots = int(input('How namy plots?:'))
 
@@ -169,6 +197,24 @@ def alf_plotter(df):
         df.plot(x='Timestamp', y=variables[i], figsize=(10,8))
 
 def alf_2var_plotter(df):
+    """
+    This function generates a plot of two variables from a given dataframe.
+
+    Input:
+    A dataframe containing the variables to be plotted
+
+    Output:
+    A plot of the two selected variables
+
+    Steps:
+    1) Use the date_slicer function (not defined in this code) to slice the dataframe by date.
+
+    2) Prompt the user to enter two variables to be plotted, separated by a semicolon and space. If the user does not enter two valid variables (i.e. columns in the dataframe), an error message is displayed and the user is prompted again.
+
+    3) Use the plot function from the matplotlib library to generate a plot of the two selected variables. The x-axis is the Timestamp column and the y-axes are the two selected variables. The plot is displayed using the show function from the matplotlib library.
+
+    4) Return nothing.
+    """
 
     df = date_slicer(df)
 
@@ -223,6 +269,27 @@ def alf_2var_plotter(df):
     ax1.legend(loc=(0.55, 1.02))
 
 def date_slicer(df):
+    """
+    This function slices a dataframe by date range.
+
+    Input:
+    A dataframe containing a Timestamp column
+
+    Output:
+    A sliced dataframe
+
+    Steps:
+    1) Prompt the user to enter a start and end date, separated by a semicolon and space, in the format YYYY-MM-DD; YYYY-MM-DD.
+    
+    2) If the input is invalid (e.g. not in the correct format, or the dates do not exist in the Timestamp column), an error message is displayed and the user is prompted again.
+    3) Set the Timestamp column as the index of the dataframe.
+
+    4) Slice the dataframe by the start and end dates entered by the user.
+
+    5) Reset the index of the sliced dataframe.
+
+    6) Return the sliced dataframe.
+    """
 
     while True:
         try:
@@ -261,6 +328,21 @@ def date_slicer(df):
 
 
 def select_panel(df):
+    """
+    This function selects a panel's data from a given dataframe.
+
+    Input:
+    A dataframe containing the data for multiple panels
+
+    Output:
+    A dataframe containing the data for the selected panel
+
+    Steps:
+    1) Prompt the user to select a panel from the list. If the panel is not in the list, an error message is displayed and the user is prompted again.
+
+    2) Select the data for the selected panel from the dataframe by filtering the columns that contain the panel name.
+    3) Return the data for the selected panel.
+    """
 
     panels = ['MS01','MS02','MS03','MS04',
               'MS05','MS06','MS07','MS08',]
