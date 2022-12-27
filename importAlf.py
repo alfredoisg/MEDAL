@@ -391,7 +391,7 @@ def getSCparam(df):
     5) Return the resulting dataframe.
     """
     params = ['Voc', 'Isc', 'FF', 'Vmpp', 'Impp', 'MPP',
-              'Irradiace', 'irradiance_yield', 'irradiation',
+              'Irradiance', 'irradiance_yield', 'irradiation',
               'temp','rain', 'ambient_temperature','wind_direction', 
               'wind_speed']
     print(params)
