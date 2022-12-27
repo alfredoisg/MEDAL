@@ -38,4 +38,3 @@ def slicer(df):
 
 
 
-
