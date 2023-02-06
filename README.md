@@ -1,3 +1,4 @@
-# theAlfFilesGitTest
+# Method Development for Alpha Centauri
 
-Repo for the MEDAL project. For testing purposes and learning Git mainly.
+### Dcoumentation on-going
+Repo for the MEDAL project.
