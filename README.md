@@ -4,5 +4,4 @@
 Repo for the MEDAL project.
 
 
-### New Section
 Documenting...
