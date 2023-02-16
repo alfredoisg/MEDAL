@@ -4,4 +4,3 @@
 Repo for the MEDAL project.
 
 
-Documenting...
