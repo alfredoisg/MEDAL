@@ -14,9 +14,7 @@ import matplotlib.dates as mdates
 #import math as m
 from ImportAlpha import *
 import os
-
-
-
+from importAlf import *
 
 
   
@@ -24,14 +22,14 @@ import os
 # Kjør:
     
 
+df = alf_JoinAndLoad()
     
-df = joinAndLoad()
-    
-# input: ../data/testJoin/
+# input: ../Arbeid/Spyder/data/testJoin/
+# input: C:\Users\minah\SINTEF\SEP-FS 22 Method Development of Alfa Centauri - Dokumenter\Arbeid\Spyder\data\testJoin
 
 #%%    
 mainMenu = ["1. Energy production",
-            "2. Output power", "3. Exit"]
+            "2. Plot output power","3. Create several plots", "4. Create plot with 2 variables", "5. Compare parameters from PV modules", "6. Exit"]
 while True:
     menuDisplay = [" ","---------------------------"," ","Select a parameter to be investigated:",""]
     for e in menuDisplay:
@@ -42,17 +40,21 @@ while True:
     mainMenuChoice = input("Please enter a menu item number: ")
     
     if mainMenuChoice == "1": 
-        printEnergy = energyProdDay(df)
-        
-        
+        printEnergy = energyProd(df)
+            
     elif mainMenuChoice == "2":
+        alf_plotMPP(df)
         
+    elif mainMenuChoice == "3":
+        alf_plotter(df)
 
-        plotMPP(df)
-        #plotPowerOneDay(data)
-
+    elif mainMenuChoice == "4": 
+        alf_2var_plotter(df)
         
-    elif MainMenuChoice == "3":
+    elif mainMenuChoice == "5":
+       compareSCmodules(df) 
+    
+    elif mainMenuChoice == "6":
         break
     else:
         print("")
@@ -61,71 +63,12 @@ while True:
     
         
     
-    
+# testet alf_plotter, men ingenting skjedde etter at jeg skrev inn variabler
+# Plott genereres ikke før programmet er ferdig. Selv om jeg kommer tilbake til meny, må menyen avsluttes før plottet kommer opp
+#select_panel: feilmelding hvis panelet ikke er i dataframe?
+#fjerne x-aksetittel "Timestamp" i plot
 
 
 
-"""
-lage liste av alle kolonner
-
-kolonner =list(data)
-kolonner.insert(1,MS01_old_names[0])
-kolonner.insert(1,MS01_old_names[0])
-kolonner[2] = kolonner[2][:-2]
-kolonner[2] = kolonner[2] + "2)"
-kolonner.insert(9,MS01_old_names[1])
-kolonner.insert(9,MS01_old_names[1])
-kolonner[10] = kolonner[10][:-2]
-kolonner[10] = kolonner[10] + "2)"
-kolonner.insert(17,MS01_old_names[2])
-kolonner.insert(17,MS01_old_names[2])
-kolonner[18] = kolonner[18][:-2]
-kolonner[18] = kolonner[18] + "2)"
-kolonner.insert(25,MS01_old_names[3])
-kolonner.insert(25,MS01_old_names[3])
-kolonner[26] = kolonner[26][:-2]
-kolonner[26] = kolonner[26] + "2)"
-kolonner.insert(33,MS01_old_names[4])
-kolonner.insert(33,MS01_old_names[4])
-kolonner[34] = kolonner[34][:-2]
-kolonner[34] = kolonner[34] + "2)"
-kolonner.insert(41,MS01_old_names[5])
-kolonner.insert(41,MS01_old_names[5])
-kolonner[42] = kolonner[42][:-2]
-kolonner[42] = kolonner[42] + "2)"
-kolonner.insert(49,MS01_old_names[6])
-kolonner.insert(49,MS01_old_names[6])
-kolonner[50] = kolonner[50][:-2]
-kolonner[50] = kolonner[50] + "2)"
-kolonner.insert(57,MS01_old_names[7])
-kolonner.insert(57,MS01_old_names[7])
-kolonner[58] = kolonner[58][:-2]
-kolonner[58] = kolonner[58] + "2)"
-kolonner.insert(65,MS01_old_names[8])
-kolonner.insert(65,MS01_old_names[8])
-kolonner[66] = kolonner[66][:-2]
-kolonner[66] = kolonner[66] + "2)"
-"""
-
-
-
-
-
-
-
-"""
-tips 
-
-  # Velger kolonner
-    RawData = RawData[['Timestamp','Device number', 'Open circuit voltage value 1 [V]',
-                 'Short circuit current value 1 [A]','MPP voltage value 1 [V]',
-                 'Maximum current value 1 [A]']] 
-
-Gjøre streng om til variabelnavn
-streng = "variabelnavn"
-myVars = locals()
-myVars[streng] = "variabelverdi"
-
-"""
 
 

@@ -114,7 +114,7 @@ def set_timeframe(dataframe): # må fikse feilmelding
 
 
 
-def EnergyProdDay(data):
+def energyProd(data):
     """
     Calculates energy production from one day in kWh 
     
@@ -128,13 +128,13 @@ def EnergyProdDay(data):
 
     """
     MS = []
-    mpp = 'MPP MS01', 'MPP MS02', 'MPP MS03', 'MPP MS04', 'MPP MS05', 'MPP MS06', 'MPP MS07', 'MPP MS08'
+    mpp = 'MPP_MS01', 'MPP_MS02', 'MPP_MS03', 'MPP_MS04', 'MPP_MS05', 'MPP_MS06', 'MPP_MS07', 'MPP_MS08'
     for e in mpp:
         if e in list(data):
             MS.append(e[-4:])
     while True: 
         if len(MS) == 1:
-            energy = np.sum(data['MPP {}'.format(MS[0])]) *60/3600000 # 60 sec between measurements, 3600000 for conversion to kWh
+            energy = np.sum(data['MPP_{}'.format(MS[0])]) *60/3600000 # 60 sec between measurements, 3600000 for conversion to kWh
             print("")
         
             break
@@ -147,12 +147,12 @@ def EnergyProdDay(data):
             for i in menu:
                 print(i)
             module = input_from_array("Please enter module name: ", menu, "Value error. This is not an accessible module name.")
-            energy = np.sum(data['MPP {}'.format(module)]) *60/3600000 # 60 sec between measurements, 3600000 for conversion to kWh
+            energy = np.sum(data['MPP_{}'.format(module)]) *60/3600000 # 60 sec between measurements, 3600000 for conversion to kWh
             print("")
             
             break
 
-    return print ("Energy production this day for {} was {:.2f} kWh.".format(module,energy))
+    return print ("Energy production this period for {} was {:.2f} kWh.".format(module,energy))
 
 
 
