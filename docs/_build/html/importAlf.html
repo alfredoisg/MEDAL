@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>importAlf module &mdash; MEDAL  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="ImportAlpha module" href="ImportAlpha.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MEDAL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MEDAL</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ImportAlpha.html">ImportAlpha module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">importAlf module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.alf_2var_plotter"><code class="docutils literal notranslate"><span class="pre">alf_2var_plotter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.alf_JoinAndLoad"><code class="docutils literal notranslate"><span class="pre">alf_JoinAndLoad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.alf_plotMPP"><code class="docutils literal notranslate"><span class="pre">alf_plotMPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.alf_plotter"><code class="docutils literal notranslate"><span class="pre">alf_plotter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.change_column_names"><code class="docutils literal notranslate"><span class="pre">change_column_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.compareSCmodules"><code class="docutils literal notranslate"><span class="pre">compareSCmodules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.date_slicer"><code class="docutils literal notranslate"><span class="pre">date_slicer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.getSCparam"><code class="docutils literal notranslate"><span class="pre">getSCparam()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.not_private_object"><code class="docutils literal notranslate"><span class="pre">not_private_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importAlf.select_panel"><code class="docutils literal notranslate"><span class="pre">select_panel()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MEDAL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MEDAL</a></li>
+      <li class="breadcrumb-item active">importAlf module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/importAlf.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-importAlf">
+<span id="importalf-module"></span><h1>importAlf module<a class="headerlink" href="#module-importAlf" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.alf_2var_plotter">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">alf_2var_plotter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.alf_2var_plotter" title="Permalink to this definition"></a></dt>
+<dd><p>This function generates a plot of two variables from a given dataframe.</p>
+<p>Input:
+A dataframe containing the variables to be plotted</p>
+<p>Output:
+A plot of the two selected variables</p>
+<p>Steps:
+1) Use the date_slicer function (not defined in this code) to slice the dataframe by date.</p>
+<ol class="arabic simple" start="2">
+<li><p>Prompt the user to enter two variables to be plotted, separated by a semicolon and space. If the user does not enter two valid variables (i.e. columns in the dataframe), an error message is displayed and the user is prompted again.</p></li>
+<li><p>Use the plot function from the matplotlib library to generate a plot of the two selected variables. The x-axis is the Timestamp column and the y-axes are the two selected variables. The plot is displayed using the show function from the matplotlib library.</p></li>
+<li><p>Return nothing.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.alf_JoinAndLoad">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">alf_JoinAndLoad</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.alf_JoinAndLoad" title="Permalink to this definition"></a></dt>
+<dd><p>This function reads in a directory containing .csv files and combines them into a single dataframe.</p>
+<p>Input:
+None</p>
+<p>Output:
+A dataframe with the contents of the combined .csv files</p>
+<p>Steps:
+1) Prompt the user for the path of the directory containing the .csv files. If the path is invalid (i.e. the directory does not exist), an error message is displayed and the user is prompted again.</p>
+<ol class="arabic simple" start="2">
+<li><p>Find all .csv files in the specified directory and store their filenames in a list.</p></li>
+<li><p>Read each .csv file into a separate dataframe and store them in a list.</p></li>
+<li><p>Concatenate the list of dataframes into a single dataframe.</p></li>
+<li><p>Reset the index of each dataframe in the list to remove any duplicate rows. Drop any duplicate columns in the final dataframe.</p></li>
+<li><p>Rename the columns of the final dataframe using the change_column_names function (not defined in this code).</p></li>
+<li><p>Reduce the memory usage of the final dataframe by casting the columns to the float32 data type, except for the first column (Timestamp).</p></li>
+<li><p>Return the final dataframe.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.alf_plotMPP">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">alf_plotMPP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.alf_plotMPP" title="Permalink to this definition"></a></dt>
+<dd><p>This function generates a plot of multiple modules’ maximum power point (MPP) values.</p>
+<p>Input:
+A dataframe containing the MPP values of the modules</p>
+<p>Output:
+A plot of the MPP values of the selected modules</p>
+<p>Steps:
+1) Prompt the user to enter the names of the modules to be plotted, separated by commas and spaces.</p>
+<ol class="arabic simple" start="2">
+<li><p>Use the date_slicer function (not defined in this code) to slice the dataframe by date.</p></li>
+<li><p>Generate a plot of the MPP values of the selected modules using the plot function from the matplotlib library. The x-axis is the Timestamp column and the y-axis is the MPP values of the selected modules. The plot is displayed using the show function from the matplotlib library.</p></li>
+<li><p>Return nothing.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.alf_plotter">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">alf_plotter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.alf_plotter" title="Permalink to this definition"></a></dt>
+<dd><p>This function generates a plot of a specified number of variables from a given dataframe.</p>
+<p>Input:
+A dataframe containing the variables to be plotted</p>
+<p>Output:
+A plot of the selected variables</p>
+<p>Steps:
+1) Prompt the user to enter the number of plots to be generated.</p>
+<ol class="arabic simple" start="2">
+<li><p>Prompt the user to enter the variables to be plotted, separated by semicolon and space. If the user does not enter the correct number of valid variables (i.e. columns in the dataframe), an error message is displayed and the user is prompted again.</p></li>
+<li><p>Use the plot function from the matplotlib library to generate a plot of each of the selected variables. The x-axis is the Timestamp column and the y-axis is the selected variable. The plot is displayed using the show function from the matplotlib library.</p></li>
+<li><p>Return nothing.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.change_column_names">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">change_column_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.change_column_names" title="Permalink to this definition"></a></dt>
+<dd><p>Replaces long columnn names with shorter and better column names</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>dataframe : DataFrame</p>
+</dd>
+<dt>Returns</dt><dd><p>dataframe : DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.compareSCmodules">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">compareSCmodules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.compareSCmodules" title="Permalink to this definition"></a></dt>
+<dd><p>This function allows the user to select a parameter from a list of predefined parameters, filter the data by a specified time range, and plot the resulting data for all available solar panel modules.</p>
+<p>Input:
+A pandas dataframe containing the data to be filtered by parameter and time range.</p>
+<p>Output:
+A plot comparing the selected parameter for all available solar panel modules over the specified time range.</p>
+<p>Steps:
+1) Call the getSCparam function to select a parameter from a list of predefined parameters and return a dataframe containing only the columns corresponding to the selected parameter.</p>
+<p>2)Call the date_slicer function to filter the data by a specified time range.</p>
+<ol class="arabic simple" start="3">
+<li><p>Plot the resulting data for all available solar panel modules over the specified time range.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.date_slicer">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">date_slicer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.date_slicer" title="Permalink to this definition"></a></dt>
+<dd><p>This function slices a dataframe by date range.</p>
+<p>Input:
+A dataframe containing a Timestamp column</p>
+<p>Output:
+A sliced dataframe</p>
+<p>Steps:
+1) Prompt the user to enter a start and end date, separated by a semicolon and space, in the format YYYY-MM-DD; YYYY-MM-DD.</p>
+<ol class="arabic simple" start="2">
+<li><p>If the input is invalid (e.g. not in the correct format, or the dates do not exist in the Timestamp column), an error message is displayed and the user is prompted again.</p></li>
+<li><p>Set the Timestamp column as the index of the dataframe.</p></li>
+<li><p>Slice the dataframe by the start and end dates entered by the user.</p></li>
+<li><p>Reset the index of the sliced dataframe.</p></li>
+<li><p>Return the sliced dataframe.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.getSCparam">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">getSCparam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.getSCparam" title="Permalink to this definition"></a></dt>
+<dd><p>This function allows the user to select a parameter from a list of predefined parameters and returns a dataframe containing only the columns corresponding to the selected parameter.</p>
+<p>Input:
+A pandas dataframe containing the data to be filtered by parameter.</p>
+<p>Output:
+A pandas DataFrame containing only the columns corresponding to the selected parameter, and an additional ‘Timestamp’ column with the corresponding timestamps.</p>
+<p>Steps:
+1) Print the list of predefined parameters and prompt the user to choose one of them.</p>
+<ol class="arabic simple" start="2">
+<li><p>If the user input is not in the list of predefined parameters, raise an error and ask the user to try again.</p></li>
+<li><p>If the user input is valid, create a copy of the dataframe containing only the columns corresponding to the selected parameter.</p></li>
+<li><p>Add a ‘Timestamp’ column to the resulting dataframe with the corresponding timestamps.</p></li>
+<li><p>Return the resulting dataframe.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.not_private_object">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">not_private_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.not_private_object" title="Permalink to this definition"></a></dt>
+<dd><p>Test of not private object to be included</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="importAlf.select_panel">
+<span class="sig-prename descclassname"><span class="pre">importAlf.</span></span><span class="sig-name descname"><span class="pre">select_panel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importAlf.select_panel" title="Permalink to this definition"></a></dt>
+<dd><p>This function selects a panel’s data from a given dataframe.</p>
+<p>Input:
+A dataframe containing the data for multiple panels</p>
+<p>Output:
+A dataframe containing the data for the selected panel</p>
+<p>Steps:
+1) Prompt the user to select a panel from the list. If the panel is not in the list, an error message is displayed and the user is prompted again.</p>
+<ol class="arabic simple" start="2">
+<li><p>Select the data for the selected panel from the dataframe by filtering the columns that contain the panel name.</p></li>
+<li><p>Return the data for the selected panel.</p></li>
+</ol>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ImportAlpha.html" class="btn btn-neutral float-left" title="ImportAlpha module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, MEH ASG.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

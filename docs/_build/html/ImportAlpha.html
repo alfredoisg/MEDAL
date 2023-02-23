@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ImportAlpha module &mdash; MEDAL  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="importAlf module" href="importAlf.html" />
+    <link rel="prev" title="MEDAL" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MEDAL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MEDAL</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ImportAlpha module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ImportAlpha.EnergyProdDay"><code class="docutils literal notranslate"><span class="pre">EnergyProdDay()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ImportAlpha.change_column_names"><code class="docutils literal notranslate"><span class="pre">change_column_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ImportAlpha.input_from_array"><code class="docutils literal notranslate"><span class="pre">input_from_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ImportAlpha.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ImportAlpha.plotPowerOneDay"><code class="docutils literal notranslate"><span class="pre">plotPowerOneDay()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ImportAlpha.set_timeframe"><code class="docutils literal notranslate"><span class="pre">set_timeframe()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="importAlf.html">importAlf module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MEDAL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MEDAL</a></li>
+      <li class="breadcrumb-item active">ImportAlpha module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ImportAlpha.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ImportAlpha">
+<span id="importalpha-module"></span><h1>ImportAlpha module<a class="headerlink" href="#module-ImportAlpha" title="Permalink to this heading"></a></h1>
+<p>Created on Mon Oct 24 12:51:46 2022</p>
+<p>&#64;author: minah</p>
+<p>This script contains functions to be imported to main script meant for data from Alpha Centauri laboratory   ..Functions to be imported to main file</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ImportAlpha.EnergyProdDay">
+<span class="sig-prename descclassname"><span class="pre">ImportAlpha.</span></span><span class="sig-name descname"><span class="pre">EnergyProdDay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ImportAlpha.EnergyProdDay" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates energy production from one day in kWh</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<p>data : DataFrame</p>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h2>
+<p>energy : float64</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ImportAlpha.change_column_names">
+<span class="sig-prename descclassname"><span class="pre">ImportAlpha.</span></span><span class="sig-name descname"><span class="pre">change_column_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ImportAlpha.change_column_names" title="Permalink to this definition"></a></dt>
+<dd><p>Replaces long columnn names with shorter and better column names</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>dataframe : DataFrame</p>
+</dd>
+<dt>Returns</dt><dd><p>dataframe : DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ImportAlpha.input_from_array">
+<span class="sig-prename descclassname"><span class="pre">ImportAlpha.</span></span><span class="sig-name descname"><span class="pre">input_from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ImportAlpha.input_from_array" title="Permalink to this definition"></a></dt>
+<dd><p>Gives the user a new chance to enter a valid input if they enter an invalid input. The message to be printed if the value is invalid is an input. The input array is valid alternatives.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>prompt : str
+array : array
+message : str</p>
+</dd>
+<dt>Returns:</dt><dd><p>value : str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ImportAlpha.load_data">
+<span class="sig-prename descclassname"><span class="pre">ImportAlpha.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FileName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ImportAlpha.load_data" title="Permalink to this definition"></a></dt>
+<dd><p>Loads data file
+Turn Timestamp column from str type to datetime64 type
+Trims the frame from 6 measurements per minute to 1 measurement per minute
+Changes column names</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>FileName : str</p>
+</dd>
+<dt>Returns:</dt><dd><p>data : DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ImportAlpha.plotPowerOneDay">
+<span class="sig-prename descclassname"><span class="pre">ImportAlpha.</span></span><span class="sig-name descname"><span class="pre">plotPowerOneDay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ImportAlpha.plotPowerOneDay" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a plot of power output one day from PV-moules 
+User decides time interval and PV-modules</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>data : DataFrame</p>
+</dd>
+<dt>Returns</dt><dd><p>plot</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ImportAlpha.set_timeframe">
+<span class="sig-prename descclassname"><span class="pre">ImportAlpha.</span></span><span class="sig-name descname"><span class="pre">set_timeframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ImportAlpha.set_timeframe" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="MEDAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="importAlf.html" class="btn btn-neutral float-right" title="importAlf module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, MEH ASG.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

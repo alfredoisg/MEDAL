@@ -4,6 +4,18 @@ import matplotlib.pyplot as plt
 import os
 
 
+def _private_object():
+    """
+    Test of private object to be excluded
+    """
+    pass
+
+def not_private_object():
+    """
+    Test of not private object to be included
+    """
+    pass
+
 def change_column_names(dataframe):
     """
     Replaces long columnn names with shorter and better column names
