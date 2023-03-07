@@ -6,7 +6,7 @@ from tkinter import filedialog
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-ctk.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 class App(ctk.CTk):
@@ -19,19 +19,37 @@ class App(ctk.CTk):
 
         # configure grid layout (3 columns)
         self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
+        self.grid_columnconfigure(1, weight=2)
         self.grid_columnconfigure(2, weight=1)
 
         # create middle column with main menu buttons
         self.main_menu_frame = ctk.CTkFrame(self)
-        self.main_menu_frame.grid(row=0, column=1, sticky="nsew")
-        self.main_menu_frame.grid_columnconfigure(0, weight=1)
-        self.create_plot_button = ctk.CTkButton(self.main_menu_frame, text="Create Plot", command=self.create_plot)
-        self.create_plot_button.grid(row=0, column=0, pady=(20, 10), sticky="ew")
-        self.calculate_button = ctk.CTkButton(self.main_menu_frame, text="Calculate", command=self.calculate)
-        self.calculate_button.grid(row=1, column=0, pady=10, sticky="ew")
-        self.exit_button = ctk.CTkButton(self.main_menu_frame, text="Exit", command=self.quit)
-        self.exit_button.grid(row=2, column=0, pady=(10, 20), sticky="ew")
+        self.main_menu_frame.grid(row=0, column=1, pady=300, sticky="nsew")
+        self.main_menu_frame.grid_columnconfigure(0, weight=2)
+
+        self.create_plot_button = ctk.CTkButton(self.main_menu_frame,
+                                                text="Create Plot",
+                                                command=self.create_plot)
+        self.create_plot_button.grid(row=0,
+                                     column=0,
+                                     pady=(20, 10),
+                                     sticky="ew")
+        
+        self.calculate_button = ctk.CTkButton(self.main_menu_frame,
+                                              text="Calculate",
+                                              command=self.calculate)
+        self.calculate_button.grid(row=1,
+                                   column=0,
+                                   pady=10,
+                                   sticky="ew")
+
+        self.exit_button = ctk.CTkButton(self.main_menu_frame,
+                                         text="Exit",
+                                         command=self.quit)
+        self.exit_button.grid(row=2,
+                              column=0,
+                              pady=(10, 20),
+                              sticky="ew")
 
         # create left column with textbox
         self.textbox = ctk.CTkTextbox(self, width=20)
