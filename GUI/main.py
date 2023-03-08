@@ -84,6 +84,8 @@ class App(ctk.CTk):
                               column=0,
                               pady=(10, 20),
                               sticky="nsew")
+        
+        self.plot_menu_frame.grid_forget()
 
 
 
