@@ -1,7 +1,10 @@
+import tkinter as tk
 import customtkinter as ctk
-from frames import MainMenuFrame, ExampleFrame
-from tkinter import filedialog
 
+from tkinter import filedialog
+import matplotlib.pyplot as plt
+
+from frames import MainMenuFrame, ExampleFramegit 
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
