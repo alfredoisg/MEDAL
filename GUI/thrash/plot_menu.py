@@ -18,7 +18,7 @@ class PlotMenuFrame(ctk.CTkFrame):
 
         self.OneVariableButton = ctk.CTkButton(master=self,
                                                text="One Variable",
-                                               command=self.hide)
+                                               command=self.show)
         
         self.OneVariableButton.grid(row=0, column=0, padx=10, pady=10)
 
@@ -45,7 +45,7 @@ class PlotMenuFrame(ctk.CTkFrame):
         
 
     def show(self):
-        self.grid(expand=True, fill="both")
+        OneVariableMenuFrame.grid(expand=True, fill="both")
     
     def hide(self):
         self.grid_forget()
